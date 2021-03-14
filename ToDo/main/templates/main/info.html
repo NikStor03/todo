@@ -1,0 +1,38 @@
+{% extends 'main/base.html' %}
+
+{% block content %}
+<style>
+ .brd {
+  border: 2px solid blue;
+  border-radius: 4px;
+  text-align: center;
+ }
+.conteiner2{
+  margin-right: 70%;
+}
+</style>
+{% for item in todo %}
+<nav aria-label="breadcrumb" class="container" style='margin-top: 50px;'>
+  <ol class="breadcrumb">
+    <li class="breadcrumb-item"><a href="{% url 'baseview' %}">Главная</a></li>
+    <li class="breadcrumb-item active">{{ item.title }}</li>
+  </ol>
+</nav>
+
+<div class="container" style='margin-bottom: 300px; margin-top: 130px;'>
+  <table class="table">
+    <thead>
+      <th>{{ item.title }}</th>
+    </thead>
+    <tbody>
+      <td>
+        <div class="mt-2">{{ item.content }}</div><br>
+      </td>
+    </tbody>
+  </table>
+  <div class="conteiner2">
+    <div class="brd">Дата создания: {{ item.time }}</div>
+  </div>
+</div>
+{% endfor %}
+{% endblock content %}
